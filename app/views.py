@@ -1,5 +1,5 @@
 from app import app
-from flask import render_template, request
+from flask import render_template, request, jsonify
 from utils import *
 import logging
 
@@ -35,14 +35,14 @@ def get_user(user_name):
 def get_posts_api():
     get_posts = get_posts_all()
     logging.info('Request all posts  /api/posts')
-    return json.dumps(get_posts, ensure_ascii=False)
+    return jsonify(get_posts)
 
 
 @app.route('/api/posts/<int:post_id>')
 def get_post_api(post_id):
     post = get_post_by_pk(post_id)
     logging.info(f'Post Request  /api/posts/{post_id}')
-    return json.dumps(post, ensure_ascii=False)
+    return jsonify(post)
 
 
 @app.errorhandler(404)

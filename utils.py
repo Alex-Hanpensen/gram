@@ -37,5 +37,3 @@ def search_for_posts(query: str) -> list[dict]:
 def get_post_by_pk(pk: int) -> list[dict]:
     data: list[dict] = read(r'\posts.json')
     return list(filter(lambda x: x['pk'] == pk, data))
-
-
